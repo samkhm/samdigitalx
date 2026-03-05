@@ -200,7 +200,7 @@ exports.cornfirmIdentifier = async (req, res) => {
   
     try {
       const profile = await User.findById(id).select(
-        "username fname lname email phone"
+        "username first_name last_name email phone"
       );
   
       if (!profile) {
@@ -217,15 +217,15 @@ exports.cornfirmIdentifier = async (req, res) => {
   
   exports.updateProfile = async (req, res) => {
     const { id } = req.params;
-    const { username, fname, lname, email, phone } = req.body;
+    const { username, first_name, last_name, email, phone } = req.body;
   
     try {
       const updatedProfile = await User.findByIdAndUpdate(
         id,
         {
           username,
-          fname,
-          lname,
+          first_name,
+          last_name,
           email,
           phone,
         },

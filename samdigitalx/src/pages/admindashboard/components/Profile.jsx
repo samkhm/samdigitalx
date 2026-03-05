@@ -24,6 +24,7 @@ export default function Profile() {
     try {
       const res = await API.get(`/auth/getProfile/${id}`);
       setProfile(res.data?.profile);
+      console.log(res.data.profile)
     } catch (error) {
       setMessage(error.response?.data?.message || "Failed to load profile");
       setMessageType("error");
@@ -109,7 +110,7 @@ export default function Profile() {
             <input
               type="text"
               className="w-full border rounded p-2 text-sm"
-              value={profile.fname}
+              value={profile.first_name}
               onChange={(e) =>
                 setProfile({ ...profile, fname: e.target.value })
               }
@@ -124,7 +125,7 @@ export default function Profile() {
               className="w-full border rounded p-2 text-sm"
               value={profile.lname}
               onChange={(e) =>
-                setProfile({ ...profile, lname: e.target.value })
+                setProfile({ ...profile, last_name: e.target.value })
               }
             />
           </div>
