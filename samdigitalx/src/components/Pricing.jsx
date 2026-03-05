@@ -8,7 +8,7 @@ export default function Pricing() {
   const plans = [
     {
       id: 1,
-      title: "Website Development",
+      title: "Web Development",
       description: "Custom business websites and scalable web systems.",
       features: [
         "Responsive Design",
