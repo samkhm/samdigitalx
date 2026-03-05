@@ -96,7 +96,7 @@ export default function Profile() {
             <input
               type="text"
               className="w-full border rounded p-2 text-sm"
-              value={profile.username}
+              value={profile.username.charAt(0).toUpperCase() + profile.username.slice(1).toLowerCase()}
               readOnly
               onChange={(e) =>
                 setProfile({ ...profile, username: e.target.value })
@@ -123,7 +123,7 @@ export default function Profile() {
             <input
               type="text"
               className="w-full border rounded p-2 text-sm"
-              value={profile.lname}
+              value={profile.last_name}
               onChange={(e) =>
                 setProfile({ ...profile, last_name: e.target.value })
               }
