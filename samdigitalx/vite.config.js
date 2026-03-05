@@ -11,9 +11,9 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  server: {
-    allowedHosts: [
-      'abbie-epigeous-sherryl.ngrok-free.dev',
-    ],
-  },
+  // server: {
+  //   allowedHosts: [
+  //     'abbie-epigeous-sherryl.ngrok-free.dev',
+  //   ],
+  // },
 })
