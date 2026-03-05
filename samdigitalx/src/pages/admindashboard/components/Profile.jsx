@@ -24,7 +24,7 @@ export default function Profile() {
     try {
       const res = await API.get(`/auth/getProfile/${id}`);
       setProfile(res.data?.profile);
-      console.log(res.data.profile)
+     
     } catch (error) {
       setMessage(error.response?.data?.message || "Failed to load profile");
       setMessageType("error");
