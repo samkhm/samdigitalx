@@ -93,12 +93,12 @@ export default function Navbar() {
 
       {/* MOBILE SLIDE-IN MENU */}
       <div
-        className={`fixed top-0 right-0 h-auto bg-[rgb(4, 4, 39)] rounded border-b
+        className={`fixed top-0 right-0 h-auto bg-[rgb(4, 4, 39)] rounded 
             shadow-lg z-40 md:hidden transform transition-transform duration-300 ease-in-out ${
           openNavbarToggle ? "translate-x-0" : "translate-x-full"
         } w-auto max-w-fit px-3 py-8`}
       >
-        <div className="flex flex-col items-start gap-6 mt-10 pl-2 border-l-2 border-t-2 rounded-t ">
+        <div className="flex flex-col items-start gap-6 mt-10 pl-2 border-l-2 border-t-2 rounded-t bg-blue-500 p-2 rounded-b-[10px]">
           {menuItems.map((item) => (
             <a
               key={item.key}
