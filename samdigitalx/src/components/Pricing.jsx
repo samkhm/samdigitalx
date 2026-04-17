@@ -21,10 +21,11 @@ export default function Pricing() {
     },
     {
       id: 2,
-      title: "Graphic Design",
+      title: "Creative Digital Services",
       description: "Professional branding and visual identity solutions.",
       features: [
         "Logo Design",
+        "Video Editing",
         "Brand Identity",
         "Marketing Graphics",
         "Social Media Assets",

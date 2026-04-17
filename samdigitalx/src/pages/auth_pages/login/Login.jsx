@@ -6,7 +6,6 @@ import API from "@/service/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-
 import { getFirstName } from "@/utils/auth";
 
 export default function Login({ switchToRegister }) {
@@ -40,8 +39,7 @@ export default function Login({ switchToRegister }) {
 
     const newErrors = {};
 
-    if (!values.email)
-      newErrors.email = "Email is required";
+    if (!values.email) newErrors.email = "Email is required";
     if (!values.password) newErrors.passowrd = "Password is required";
 
     if (Object.keys(newErrors).length) {
@@ -57,9 +55,10 @@ export default function Login({ switchToRegister }) {
         email: values.email,
         password: values.password,
       });
+      console.log(res.data)
 
       localStorage.setItem("token", res.data.token);
-      
+
       const firstName = getFirstName();
 
       const hour = new Date().getHours();
@@ -77,7 +76,7 @@ export default function Login({ switchToRegister }) {
       toast.success(
         `${timeOfDay} ${
           firstName.charAt(0).toUpperCase() + firstName.slice(1)
-        }, it's my pleasure to have you here😊`
+        }, it's my pleasure to have you here😊`,
       );
 
       setTimeout(() => navigate("/dashboard"), 1000);
@@ -92,15 +91,18 @@ export default function Login({ switchToRegister }) {
   return (
     <>
       <div className="relative min-h-screen w-full bg-gradient-to-b from-[rgb(3,3,26)] to-[rgb(10,10,71)]">
-       
         {/* Overlay */}
         <div className="absolute inset-0 z-10 flex items-center justify-center px-4">
           <div className="flex flex-col gap-4 items-center w-full max-w-lg">
             {/* Header */}
-            <div className="bg-white/60 p-4 rounded w-full text-center border-b-4 border-blue-500
+            <div
+              className="bg-white/60 p-4 rounded w-full text-center border-b-4 border-blue-500
             animate__animated animate__zoomIn animate__delay-1s
-            ">
-              <h3 className="text-2xl font-semibold animate__animated animate__zoomIn animate__delay-2s">Login</h3>
+            "
+            >
+              <h3 className="text-2xl font-semibold animate__animated animate__zoomIn animate__delay-2s">
+                Login
+              </h3>
               <span className="text-sm text-gray-700 animate__animated animate__zoomIn animate__delay-2s">
                 To get started with Samdigitalx Portfolio App
               </span>
