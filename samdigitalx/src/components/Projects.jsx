@@ -5,6 +5,14 @@ import API from "@/service/api";
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(4);
+
+  const handleLoadMore = () =>{
+    setVisibleCount((prev) => prev + 4)
+  };
+
+  const visibleProjects = projects.slice(0, visibleCount)
+
   const fetchProjects = async () => {
     setLoading(true)
     try {
@@ -21,7 +29,7 @@ export default function Projects() {
     fetchProjects()
   }, [])
 
-  console.log(projects)
+ 
 
  //database data
 
@@ -136,9 +144,23 @@ const ProjectSkeleton = () => {
         ? Array.from({ length: 4 }).map((_, i) => (
             <ProjectSkeleton key={i} />
           ))
-        : projects.map((project) => (
+        : visibleProjects.map((project) => (
             <ProjectItem key={project._id} project={project} />
           ))}
+ <div className="w-full flex items-center justify-end">
+ {
+            visibleCount < projects.length && (
+              <button
+               onClick={handleLoadMore}
+               className="text-white p-2 italic text-sm hover:text-gray-400 "
+              >
+                Load More...
+              </button>
+            )
+          }
+
+ </div>
+        
       </div>
     </section>
   );

@@ -19,6 +19,13 @@ export default function Skills() {
 
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(false)
+  const [visibleCount, setVisibleCount] = useState(4)
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 4)
+  }
+
+  const visibleSkills = skills.slice(0, visibleCount)
 
   const fetchSkills = async () => {
     setLoading(true)
@@ -103,7 +110,7 @@ export default function Skills() {
     ? Array.from({ length: 8 }).map((_, index) => (
         <SkillSkeleton key={index} />
       ))
-    : skills.map((skill) => (
+    : visibleSkills.map((skill) => (
         <SkillBadge
           key={skill._id}
           title={skill.title}
@@ -111,6 +118,16 @@ export default function Skills() {
         />
       ))}
 
+<div className="flex items-center justify-end w-full">
+  {
+    visibleCount < skills.length && (
+      <button className="text-white text-sm italic hover:text-gray-400"
+      onClick={handleLoadMore}>
+        Load more...
+      </button>
+    )
+  }
+</div>
       </div>
     </section>
   );
